@@ -1,0 +1,88 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="sale_automation_log_tree">
+            <field name="name">sale_automation_log.tree</field>
+            <field name="model">sale_automation_log</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Sale Automation Log" create="false" edit="false" delete="false">
+                    <field name="sale_automation"/>
+                    <field name="customer_id" />
+                    <field name="x_external_order_id" />
+                    <field name="date_submit" />
+                    <field name="product_id"/>
+                    <field name="product_qty"/>
+                    <field name="product_uom"/>
+                    <field name="product_unit_price"/>
+                    <field name="warehouse_id"/>
+                    <field name="account_journal" readonly="1"/>
+                    <field name="status"/>
+                    <field name="sale_order_id"/>
+                    <field name="delivery_id"/>
+                    <field name="inv_id" readonly="1"/>
+                    <field name="create_uid" readonly="1"/>
+                    <field name="create_date" readonly="1"/>
+                    <field name="write_uid" readonly="1"/>
+                    <field name="write_date" readonly="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_automation_log_form">
+            <field name="name">sale_automation_log.form</field>
+            <field name="model">sale_automation_log</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Sale Automation Log" create="false" edit="true" delete='false'>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <header>
+                                <button type="object" name="reRunSALog"
+                                    string="Re-Run" class="oe_highlight" custom="click" attrs="{'invisible': [('status', '=', 'Success')]}"/>
+                                <field name="status" widget="statusbar" attrs="{'clickable':[('true')]}"/>
+                            </header>
+                        </div>
+                        <group>
+                            <group string="Sale Automation Input">
+                                <field name="sale_automation" readonly="1"/>
+                                <field name="customer_id" readonly="1"/>
+                                <field name="x_external_order_id" readonly="1"/>
+                                <field name="date_submit" readonly="1"/>
+                                <field name="product_id" readonly="1"/>
+                                <field name="product_qty" readonly="1"/>
+                                <field name="product_uom" readonly="1"/>
+                                <field name="product_taxes" readonly="1"/>
+                                <field name="product_unit_price" readonly="1"/>
+                                <field name="product_desc" readonly="1"/>
+                                <field name="warehouse_id" readonly="1"/>
+                                <field name="product_same_inv" invisible="1"/>
+                                <field name="sales_person" readonly="1"/>
+                                <field name="account_journal" readonly="1"/>
+                                <field name="payment_amount_money" readonly="1"/>
+                                <field name="payment_amount_percent" readonly="1"/>
+                                <field name="payment_amount_final" readonly="1"/>
+                                <field name="confirm_so" readonly="1"/>
+                                <field name="validate_delivery" readonly="1"/>
+                                <field name="create_invoice" readonly="1"/>
+                                <field name="post_invoice" readonly="1"/>
+                                <field name="invoice_register_payment" readonly="1"/>
+                                <field name="create_uid" readonly="1"/>
+                                <field name="create_date" readonly="1"/>
+                                <field name="write_uid" readonly="1"/>
+                                <field name="write_date" readonly="1"/>
+                            </group>
+                            <group string="Sale Automation Output">
+                                <field name="sale_order_id" readonly="1"/>
+                                <field name="delivery_id" readonly="1"/>
+                                <field name="inv_id" readonly="1"/>
+                                <field name="error" readonly="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

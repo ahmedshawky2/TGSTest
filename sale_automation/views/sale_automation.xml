@@ -1,0 +1,79 @@
+<odoo>
+    <data>
+
+        <record model="ir.ui.view" id="sale_automation_tree">
+            <field name="name">sale_automation.tree</field>
+            <field name="model">sale_automation</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Sale Automation" create="true" edit="true" delete="true">
+                    <field name="name"/>
+                    <field name="date_submit"/>
+                    <field name="status" />
+                    <field name="no_initial_rec"/>
+                    <field name="no_success_rec"/>
+                    <field name="confirm_so" readonly="1"/>
+                    <field name="validate_delivery" readonly="1"/>
+                    <field name="create_invoice" readonly="1"/>
+                    <field name="post_invoice" readonly="1"/>
+                    <field name="invoice_register_payment" readonly="1"/>
+                    <field name="create_uid" readonly="1"/>
+                    <field name="create_date" readonly="1"/>
+                    <field name="write_uid" readonly="1"/>
+                    <field name="write_date" readonly="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="sale_automation_form">
+            <field name="name">sale_automation.form</field>
+            <field name="model">sale_automation</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Sale Automation" create="true" edit="true" delete='true'>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="action_sale_automation_log_tree_view" class="oe_stat_button" type="object" icon="fa-area-chart">
+                                <field name="sale_automation_log_count" string="Orders" widget="statinfo"/>
+                            </button>
+                            <button name="action_sale_automation_log_tree_view" class="oe_stat_button" type="object" icon="fa-usd">
+                                <field name="sale_automation_log_money_total" string="" widget="statinfo"/>
+                            </button>
+                        </div>
+                        <header>
+                            <button type="object" name="runSA" string="Run" class="oe_highlight" custom="click" attrs="{'invisible': [('status', '!=', 'New')]}"/>
+                            <button type="object" name="testSA" string="Test Import" class="oe_highlight" custom="click" attrs="{'invisible': [('status', '!=', 'New')]}"/>
+                            <button type="object" name="checkSA" string="Check FInal" class="oe_highlight" custom="click" attrs="{'invisible': [('status', '!=', 'Partial Success')]}"/>
+                            <field name="status" widget="statusbar" attrs="{'clickable':[('true')]}"/>
+                        </header>
+                        <group>
+                            <group string="Sale Automation Details">
+                                <field name="name" readonly="1"/>
+                                <field name="date_submit" attrs="{'readonly': [('status', '!=', 'New')]}"/>
+                                <field name="confirm_so" readonly="0"/>
+                                <field name="validate_delivery" readonly="0"/>
+                                <field name="create_invoice" readonly="0"/>
+                                <field name="post_invoice" readonly="0"/>
+                                <field name="invoice_register_payment" readonly="0"/>
+                                <field name="no_initial_rec" readonly="1"/>
+                                <field name="no_success_rec" readonly="1"/>
+                                <field name="create_uid" readonly="1"/>
+                                <field name="create_date" readonly="1"/>
+                                <field name="write_uid" readonly="1"/>
+                                <field name="write_date" readonly="1"/>
+                            </group>
+                            <group string="Excel Input File">
+                                <field name="excel_file" filename="name"/>
+                                <!--button name="runSA" string="Upload Excel File" type="object"  class="oe_highlight" /-->
+                            </group>
+                        </group>
+                        <group string="Error Log">
+                            <field name="error" readonly="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</odoo>

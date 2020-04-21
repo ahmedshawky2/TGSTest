@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+
+    <record id="Sale_Automation_Menu" model="ir.ui.menu" >
+        <field name="action" eval="False"/>
+        <field name="active" eval="True"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="name">Sale Automation</field>
+        <field name="parent_id" eval="False"/>
+        <field name="sequence">10</field>
+        <field name="web_icon">fa fa-calendar,#FFAB4A,#838383</field>
+    </record>
+
+    <record id="Sale_Automation_Rec_Menu" model="ir.ui.menu" >
+        <field name="action" ref="sale_automation_ACTION"/>
+        <field name="active" eval="True"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="name">Sale Automation</field>
+        <field name="parent_id" ref="Sale_Automation_Menu"/>
+        <field name="sequence">10</field>
+        <field name="web_icon" eval="False"/>
+    </record>
+
+    <record id="Sale_Automation_Rec_Logs_Menu" model="ir.ui.menu" >
+        <field name="action" ref="sale_automation_log_ACTION"/>
+        <field name="active" eval="True"/>
+        <field name="groups_id" eval="[(6, 0, [])]"/>
+        <field name="name">Sale Automation Logs</field>
+        <field name="parent_id" ref="Sale_Automation_Menu"/>
+        <field name="sequence">11</field>
+        <field name="web_icon" eval="False"/>
+    </record>
+
+</odoo>
