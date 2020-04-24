@@ -267,7 +267,10 @@ class saleAutomation(models.Model):
                                 _logger.info('Cell product ! "%s"' % (
                                         "Row: " + str(row_no) + "   Col: " + str(col) + "   Cell Data: " + str(sheet.cell(row_no, col).value)))
 
-                                product = str(sheet.cell(row_no, col).value)
+                                try:
+                                    product = str(int(sheet.cell(row_no, col).value))
+                                except Exception as e:
+                                    product = str(sheet.cell(row_no, col).value)
 
                                 productProduct = self.env['product.product'].search([('default_code', '=', product)])
 
